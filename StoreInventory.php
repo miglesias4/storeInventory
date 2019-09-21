@@ -15,7 +15,7 @@
            required="required"/></label><br />
     <label>Image:</label>
     <input type="file" name="productImage" /><br />
-    
+
 </fieldset>
 
 <input type="submit" value="Add">

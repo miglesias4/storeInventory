@@ -14,7 +14,8 @@
         <tbody>
         <!-- PHP code here -->
         <?php
-
+            $productName = $_POST['name'];
+            $productPLU = $_POST['plu'];
         echo "php here";
         ?>
 
