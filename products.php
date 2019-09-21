@@ -14,9 +14,26 @@
         <tbody>
         <!-- PHP code here -->
         <?php
-            $productName = $_POST['name'];
-            $productPLU = $_POST['plu'];
-        echo "php here";
+            if(isset($_POST['name'])){
+                $productName = $_POST['name'];
+                echo $productName;
+            }
+            else{
+                $productName = null;
+                echo "No name found";
+            }
+        if(isset($_POST['plu'])){
+            $productPLU = $_POST['name'];
+            echo $productName;
+        }
+        else{
+            $productPLU = null;
+            echo "No PLU found";
+        }
+            for($i = 0; $i < 6; $i++){
+                echo $productName;
+                echo $productPLU;
+        }
         ?>
 
         </tbody>
