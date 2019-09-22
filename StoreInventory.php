@@ -5,22 +5,29 @@
 
 <h3> Enter Product Details</h3>
 
-<fieldset action="products.php" method=post>
+<form action="products.php", method=post>
     <legend>Add Item</legend>
     <label>Name:</label>
-    <label>
-        <input type="text" name="name"
+        <input type="text" name='names'
                required="required"/>
     </label><br />
     <label>PLU:</label>
-    <label>
-        <input type="text" name="plu"
-               required="required"/>
-    </label><br />
+    <input type="text" name="plu"
+           required="required"/>
+    <br />
     <label>Image:</label>
     <input type="file" name="productImage" /><br />
 
     <input type="submit" value="Add">
+</form>
 
-</fieldset>
+<body>
+    <table border="1px">
+        <tr>
+            <th>Name</th>
+            <th>PLU</th>
+        </tr>
+
+    </table>
+</body>
 </html>
