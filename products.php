@@ -12,8 +12,28 @@
             </tr>
         </thread>
         <tbody>
-        <!-- PHP code here -->
         <?php
+        $file = "products/inventory.txt";
+
+        function add_item($productDesc){
+            global $file;
+            if(!empty($productDesc)){
+                $fp = fopen($file,"a"); //Appends
+                fputs($fp, nl2br($productDesc). "<br/>\n");
+                fclose($fp);
+            }
+        }
+
+        function show_items(){
+            global $file;
+            if(file_exists($file)){
+                $fp = fopen($file, "r"); //Reads
+                while(!feof($fp)){
+                    echo fgets($fp); //Reads line
+                }
+                fclose($fp);
+            }
+        }
 
         ?>
 
