@@ -1,30 +1,45 @@
 <html>
 <h1> Store Inventory</h1>
-<h3> Enter Product Details</h3>
-
-<?php
-$productName = $_POST['name'];
-$productPlu = $_POST['plu'];
-$productDesc = $productName . $productPlu;
-?>
-<form action="products.php" method=post>
-    <legend>Add Item</legend>
-    <label>Name:</label>
-        <input type="text" name="name"
-               required="required"/>
-    </label>
-    <label>PLU:</label>
-    <input type="text" name="plu"
-           required="required"/>
-    <br />
+<h2> Enter Product Details</h2>
+<form method="POST" action="StoreInventory.php">
+    Name: <input type="text" name="name">
+    <br><br>
+    PLU: <input type="text" name="plu">
+    <br><br>
     <label>Image:</label>
     <input type="file" name="productImage" /><br />
-
     <input type="submit" value="Add">
 </form>
-<?php
-add_item($productDesc);
-?>
 
+<?php
+use http\Env\Request;
+$productDesc = array_key_exists('name', $_POST) ? $_POST['name'] : null;
+$productPlu = array_key_exists('plu', $_POST) ? $_POST['plu'] : null;
+$file = "productDesc.txt";
+add_item($productDesc, $productPlu);
+show_items($productDesc);
+
+function add_item($productDesc, $productPlu){
+    global $file;
+    if(!empty($productDesc)){
+        $fp = fopen($file,"a"); //Appends
+        fputs($fp, nl2br($productDesc). ",");
+        fputs($fp, nl2br($productPlu). "<br/>\n");
+        fclose($fp);
+    }
+}
+
+function show_items(){
+    global $file;
+    if(file_exists($file)){
+        $fp = fopen($file, "r"); //Reads
+        while(!feof($fp)){
+            echo fgets($fp); //Reads line
+        }
+        fclose($fp);
+    }
+}
+
+?>
 </body>
 </html>
